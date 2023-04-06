@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+  background: #0a1929;
+  height: 100vh;
+}
+
+.active-review {
+  border: 3px solid #0a1929
+}
