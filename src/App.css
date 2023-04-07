@@ -5,5 +5,10 @@
 }
 
 .active-review {
-  border: 3px solid #0a1929
+  border: 3px solid #0a1929;
+}
+.checkbox_main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -6,10 +6,10 @@ import Rating from '@mui/material/Rating';
 export default function RatingStar({ rating, setRating }) {
     return (
         <>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ height: '70vh' }}>
                 <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                        <Box sx={{ bgcolor: '#cfe8fc', height: '70vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                        <Box sx={{ bgcolor: '#cfe8fc', height: '70vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '65%', boxShadow: "10px 5px 5px white" }}>
                             <h1>Welcome !</h1>
                             <Container>
                                 <Typography>How would you rate your experience with CupCake Central </Typography>
@@ -31,6 +31,7 @@ export default function RatingStar({ rating, setRating }) {
                             onChange={(event, newValue) => {
                                 setRating(newValue);
                             }}
+                            size='large'
                         />
                     </Box>
                 </Grid>

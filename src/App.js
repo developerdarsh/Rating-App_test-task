@@ -7,6 +7,10 @@ import Welcome from './Components/Welcome';
 import { Button, Container, Grid } from '@mui/material'
 import PerosnalInfo from './Components/PerosnalInfo';
 import ThankYou from './Components/ThankYou';
+import Expand from './Components/Expand'
+import Flavor from './Components/Flavor'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 
 function App() {
   const [steps, setSteps] = useState(0)
@@ -18,6 +22,8 @@ function App() {
     email: '',
     phone: null
   })
+  const [flavor, setFlavor] = useState('')
+  const [expand, setExpand] = useState([])
 
   const submitHandler = () => {
     setSteps(0)
@@ -47,15 +53,23 @@ function App() {
         )
       case 3:
         return (
-          <Response response={response} setResponse={setResponse} />
+          <Response rating={rating} response={response} setResponse={setResponse} />
         )
       case 4:
         return (
-          <PerosnalInfo personal={personal} setPersonal={setPersonal} />
+          <Expand expand={expand} setExpand={setExpand} />
         )
       case 5:
         return (
-          <ThankYou Data={[rating, response, review, personal]} />
+          <Flavor flavor={flavor} setFlavor={setFlavor} />
+        )
+      case 6:
+        return (
+          <PerosnalInfo personal={personal} setPersonal={setPersonal} />
+        )
+      case 7:
+        return (
+          <ThankYou Data={[rating, response, review, personal, expand, flavor]} />
         )
       default:
         return (
@@ -71,12 +85,14 @@ function App() {
           <Container sx={{ display: 'flex', justifyContent: 'space-between' }} maxWidth="lg">
             <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
               {steps > 0 &&
-                <Button variant="outlined" onClick={() => setSteps(steps - 1)}>Previous</Button>
+                <Button sx={{ color: "#FFF" }} onClick={() => setSteps(steps - 1)} startIcon={<ArrowLeftIcon />}>
+                  Previous
+                </Button>
               }
             </Grid>
             <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-              {steps < 5 ?
-                <Button variant="contained" onClick={() => setSteps(steps + 1)}>Next</Button>
+              {steps < 7 ?
+                <Button variant="contained" onClick={() => setSteps(steps + 1)} sx={{ background: "#cfe8fc", color: "#0a1929" }} endIcon={<ArrowRightIcon />}>Next</Button>
                 :
                 <Button variant="contained" onClick={submitHandler}>Submit</Button>
               }
